@@ -2,9 +2,9 @@
 
 namespace Ecommerce\Core\Routing;
 
-    /**
-     * Defines an approach of matching browser request URLs with our controllers.
-     */
+/**
+ * Defines an approach of matching browser request URLs with our controllers.
+ */
 interface RouterInterface
 {
     /**
