@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ecommerce\Core\Controller;
 
 use Ecommerce\Core\DB\DBConnection;
+use Ecommerce\Core\DB\Sql\Select;
 
 class Setup implements ControllerInterface
 {
@@ -20,10 +21,15 @@ class Setup implements ControllerInterface
         foreach ($listOfScripts as $installFile) {
             $path = str_replace(['/', 'app'], ['\\', 'Ecommerce'], $installFile);
             $path = substr($path, 0, strcspn($path, '.'));
-            $setupModules = [];
+            $select = new Select($connection);
+            $listOfSetupModules = $select->select('setup_modules');
+            if (!in_array($path, $listOfSetupModules)){
+                echo 'not fined module, install it';
+                $object = new $path($connection);
+                $object->install();
 
-            $object = new $path($connection);
-            $object->install();
+            }
+
         }
     }
 }
