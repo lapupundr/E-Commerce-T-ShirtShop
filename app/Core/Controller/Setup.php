@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ecommerce\Core\Controller;
 
 use Ecommerce\Core\DB\DBConnection;
+use Ecommerce\Core\DB\Sql\Insert;
 use Ecommerce\Core\DB\Sql\Select;
 
 class Setup implements ControllerInterface
@@ -27,7 +28,8 @@ class Setup implements ControllerInterface
                 echo 'not fined module, install it';
                 $object = new $path($connection);
                 $object->install();
-
+                $addModule = new Insert($connection);
+                $addModule->insert('setup_modules', 'module_path', $path);
             }
 
         }
