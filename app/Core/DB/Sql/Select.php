@@ -25,13 +25,12 @@ class Select implements SelectInterface
     public function select(string $table, array $where = [], string $condition = 'LIKE', string $pattern = '%'): array
     {
         $sql = <<<SQL
-SELECT *
-FROM $table
--- WHERE $where $condition $pattern;
+SELECT * FROM $table;
 SQL;
-        $listOfSetupModules = [];
         $connection = $this->connection->getConnection();
-        $connection->query($sql);
-        return $listOfSetupModules;
+        $result = $connection->query($sql);
+        $listOfSetupModules = $result->fetch_assoc();
+        $listResult = ($listOfSetupModules) ? ($listOfSetupModules) : ([]);
+        return $listResult;
     }
 }

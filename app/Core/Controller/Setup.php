@@ -24,14 +24,16 @@ class Setup implements ControllerInterface
             $path = substr($path, 0, strcspn($path, '.'));
             $select = new Select($connection);
             $listOfSetupModules = $select->select('setup_modules');
-            if (!in_array($path, $listOfSetupModules)){
-                echo 'not fined module, install it';
+            $pathNoSlash = str_replace('\\', '', $path);
+            if (!in_array($pathNoSlash, $listOfSetupModules)) {
+                echo ' not found module, install it';
                 $object = new $path($connection);
                 $object->install();
                 $addModule = new Insert($connection);
                 $addModule->insert('setup_modules', 'module_path', $path);
+            } else {
+                echo ' Module is already installed';
             }
-
         }
     }
 }
