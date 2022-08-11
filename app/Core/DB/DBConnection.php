@@ -21,14 +21,12 @@ class DBConnection implements ConnectionInterface
     {
         if ($this->connection === null) {
             try {
-                $connection = mysqli_connect('localhost', 'root', 'root', 't_shirt_shop');
+                $connection = mysqli_connect('localhost', 'root', 'root', 'ttt_shirt_shop');
             } catch (Throwable $e) {
-                echo $e->getMessage();
-                $connection = false;
+                echo 'Unable to establish the connection to the database';
+                exit();
             }
-            if ($connection === false) {
-                echo 'False DB connection';
-            }
+
             $this->connection = $connection;
         }
         return $this->connection;
