@@ -3,6 +3,7 @@
 namespace Ecommerce\Core\DB\Sql;
 
 use Ecommerce\Core\DB\ConnectionInterface;
+use Ecommerce\Core\DB\Sql\WhereInterface;
 
 class Select implements SelectInterface
 {
@@ -22,11 +23,15 @@ class Select implements SelectInterface
     /**
      * @inheritDoc
      */
-    public function select(string $table, array $where = [], string $condition = 'LIKE', string $pattern = '%'): array
+    public function select(string $table, ?WhereInterface $where): array
     {
-        $sql = <<<SQL
-SELECT * FROM $table;
-SQL;
+        $sql = "SELECT * FROM $table";
+        $field = $where->getField();
+        $condition = $where->getConditions();
+        $value = $where->getValues();
+        if ($where) {
+            $sql .= " WHERE $field $condition '$value'";
+        }
         $connection = $this->connection->getConnection();
         $result = $connection->query($sql);
         $listOfSetupModules = $result->fetch_assoc();

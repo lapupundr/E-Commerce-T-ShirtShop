@@ -7,6 +7,7 @@ namespace Ecommerce\Core\Controller;
 use Ecommerce\Core\DB\DBConnection;
 use Ecommerce\Core\DB\Sql\Insert;
 use Ecommerce\Core\DB\Sql\Select;
+use Ecommerce\Core\DB\Sql\Where;
 
 class Setup implements ControllerInterface
 {
@@ -23,7 +24,8 @@ class Setup implements ControllerInterface
             $path = str_replace(['/', 'app'], ['\\', 'Ecommerce'], $installFile);
             $path = substr($path, 0, strcspn($path, '.'));
             $select = new Select($connection);
-            $listOfSetupModules = $select->select('setup_modules');
+            $where = new Where(['module_path', '=', 'catalog']);
+            $listOfSetupModules = $select->select('setup_modules', $where);
             $pathNoSlash = str_replace('\\', '', $path);
             if (!in_array($pathNoSlash, $listOfSetupModules)) {
                 echo ' not found module, install it';
