@@ -24,7 +24,7 @@ class Setup implements ControllerInterface
             $path = str_replace(['/', 'app'], ['\\', 'Ecommerce'], $installFile);
             $path = substr($path, 0, strcspn($path, '.'));
             $select = new Select($connection);
-            $where = new Where(['module_path', '=', 'catalog']);
+            $where = new Where(['module_path', 'LIKE', 'Ec%']);
             $listOfSetupModules = $select->select('setup_modules', $where);
             $pathNoSlash = str_replace('\\', '', $path);
             if (!in_array($pathNoSlash, $listOfSetupModules)) {
