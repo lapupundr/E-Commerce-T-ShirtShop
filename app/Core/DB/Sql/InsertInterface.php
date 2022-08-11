@@ -13,5 +13,5 @@ interface InsertInterface
      * @param string $value
      * @return void
      */
-    public function insert(string $tableName, string $colName, string $value): void;
+    public function insert(string $tableName, array $arrValue): void;
 }

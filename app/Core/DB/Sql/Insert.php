@@ -23,12 +23,25 @@ class Insert implements InsertInterface
     /**
      * @inheritDoc
      */
-    public function insert(string $tableName, string $colName, string $value): void
+//    public function insert(string $tableName, string $colName, string $value): void
+//    {
+//        $sql = <<<SQL
+//INSERT INTO $tableName ($colName) VALUES('$value');
+//SQL;
+//        $sql = "INSERT INTO $tableName ($colName) VALUES ()";
+//        $connection = $this->connection->getConnection();
+//        $connection->query($sql);
+//    }
+
+    public function insert(string $tableName, array $arrValue): void
     {
-        $sql = <<<SQL
-INSERT INTO $tableName ($colName) VALUES('$value');
-SQL;
+        $keys = implode(', ', array_keys($arrValue));
+        $values = implode(', ', $arrValue);
+        $countItems = str_repeat('?', count($arrValue));
+        $sql = "INSERT INTO $tableName ($keys) VALUES ($countItems)";
         $connection = $this->connection->getConnection();
-        $connection->query($sql);
+        $stmt = $connection->prepare($sql);
+        $stmt->execute([$values]);
+
     }
 }
