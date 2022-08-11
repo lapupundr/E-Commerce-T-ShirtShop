@@ -8,9 +8,10 @@ interface InsertInterface
     /**
      * Insert record to database.
      *
-     * @param string $col_name
+     * @param string $tableName
+     * @param string $colName
      * @param string $value
      * @return void
      */
-    public function insert(string $table_name, string $col_name, string $value): void;
+    public function insert(string $tableName, string $colName, string $value): void;
 }

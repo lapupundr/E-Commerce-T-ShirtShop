@@ -23,10 +23,10 @@ class Insert implements InsertInterface
     /**
      * @inheritDoc
      */
-    public function insert(string $table_name, string $col_name, string $value): void
+    public function insert(string $tableName, string $colName, string $value): void
     {
         $sql = <<<SQL
-INSERT INTO $table_name ($col_name) VALUES('$value');
+INSERT INTO $tableName ($colName) VALUES('$value');
 SQL;
         $connection = $this->connection->getConnection();
         $connection->query($sql);
