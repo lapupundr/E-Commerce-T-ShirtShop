@@ -23,16 +23,6 @@ class Insert implements InsertInterface
     /**
      * @inheritDoc
      */
-//    public function insert(string $tableName, string $colName, string $value): void
-//    {
-//        $sql = <<<SQL
-//INSERT INTO $tableName ($colName) VALUES('$value');
-//SQL;
-//        $sql = "INSERT INTO $tableName ($colName) VALUES ()";
-//        $connection = $this->connection->getConnection();
-//        $connection->query($sql);
-//    }
-
     public function insert(string $tableName, array $arrValue): void
     {
         $keys = implode(', ', array_keys($arrValue));
@@ -42,6 +32,5 @@ class Insert implements InsertInterface
         $connection = $this->connection->getConnection();
         $stmt = $connection->prepare($sql);
         $stmt->execute([$values]);
-
     }
 }

@@ -24,7 +24,6 @@ class Select implements SelectInterface
      */
     public function select(string $table, array $where = [], string $condition = 'LIKE', string $pattern = '%'): array
     {
-//        $whereStr = implode(',', $where);
         $sql = <<<SQL
 SELECT * FROM $table;
 SQL;

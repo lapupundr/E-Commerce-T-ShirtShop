@@ -30,7 +30,6 @@ class Setup implements ControllerInterface
                 $object = new $path($connection);
                 $object->install();
                 $addModule = new Insert($connection);
-//                $addModule->insert('setup_modules', 'module_path', $path);
                 $addModule->insert('setup_modules', ['module_path'=>$pathNoSlash]);
             } else {
                 echo ' Module is already installed';
