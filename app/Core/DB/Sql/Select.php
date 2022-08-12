@@ -3,7 +3,6 @@
 namespace Ecommerce\Core\DB\Sql;
 
 use Ecommerce\Core\DB\ConnectionInterface;
-use Ecommerce\Core\DB\Sql\WhereInterface;
 
 class Select implements SelectInterface
 {
@@ -26,16 +25,26 @@ class Select implements SelectInterface
     public function select(string $table, ?WhereInterface $where): array
     {
         $sql = "SELECT * FROM $table";
-        $field = $where->getField();
-        $condition = $where->getConditions();
-        $value = $where->getValues();
-        if ($where) {
-            $sql .= " WHERE $field $condition '$value'";
-        }
+        $this->addWhereCondition($where, $sql);
         $connection = $this->connection->getConnection();
         $result = $connection->query($sql);
         $listOfSetupModules = $result->fetch_assoc();
-        $listResult = ($listOfSetupModules) ? ($listOfSetupModules) : ([]);
-        return $listResult;
+        return $listOfSetupModules ?: [];
+//        return ($listOfSetupModules) ? ($listOfSetupModules) : ([]);
+    }
+
+    /**
+     * @param WhereInterface|null $where
+     * @param string $sql
+     * @return void
+     */
+    private function addWhereCondition(?WhereInterface $where, string &$sql): void
+    {
+        if ($where instanceof WhereInterface) {
+            $field = $where->getField();
+            $condition = $where->getConditions();
+            $value = $where->getValues();
+            $sql .= " WHERE $field $condition '$value'";
+        }
     }
 }

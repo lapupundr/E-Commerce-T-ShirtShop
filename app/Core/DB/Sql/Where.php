@@ -2,20 +2,33 @@
 
 namespace Ecommerce\Core\DB\Sql;
 
+use Ecommerce\Core\DB\WhereConditionException;
+
 class Where implements WhereInterface
 {
     /**
      * @var array
      */
-    private array $arrWhere = ['field', 'condition', 'value'];
+    private array $arrWhere = [];
+
+    /**
+     * @var array
+     */
+    private array $arrWhereKeys = ['field', 'value', 'condition'];
 
     /**
      * @param array $arrWhereValues
+     * @throws WhereConditionException
      */
     public function __construct(array $arrWhereValues)
     {
-        $this->arrWhere = array_combine($this->arrWhere, $arrWhereValues);
-        $this->getField();
+        $arrWhereValues[2] = strtoupper($arrWhereValues[2]);
+        $this->arrWhere = array_combine($this->arrWhereKeys, $arrWhereValues);
+        $available = ['>', '<', '=', 'LIKE'];
+        $valueToCompare = $this->arrWhere['condition'];
+        if (!in_array($valueToCompare, $available)) {
+            throw new WhereConditionException('Unexpected condition: ' . $valueToCompare);
+        }
     }
 
     /**
@@ -26,13 +39,19 @@ class Where implements WhereInterface
         return $this->arrWhere['field'];
     }
 
-    public function getConditions(): mixed
-    {
-        return $this->arrWhere['condition'];
-    }
-
-    public function getValues(): mixed
+    /**
+     * @return string|int|float
+     */
+    public function getValues(): string|int|float
     {
         return $this->arrWhere['value'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getConditions(): string
+    {
+        return $this->arrWhere['condition'];
     }
 }

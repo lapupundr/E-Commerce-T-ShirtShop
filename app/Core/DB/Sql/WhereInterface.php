@@ -8,11 +8,17 @@ interface WhereInterface
     /**
      * Return WHERE conditions
      *
-     * @return mixed
+     * @return string
      */
     public function getField(): string;
 
-    public function getConditions(): mixed;
+    /**
+     * @return string|int|float
+     */
+    public function getValues(): string|int|float;
 
-    public function getValues(): mixed;
+    /**
+     * @return string
+     */
+    public function getConditions(): string;
 }
