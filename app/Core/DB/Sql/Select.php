@@ -28,8 +28,12 @@ class Select implements SelectInterface
         $this->addWhereCondition($where, $sql);
         $connection = $this->connection->getConnection();
         $result = $connection->query($sql);
-        $listOfSetupModules = $result->fetch_assoc();
-        return $listOfSetupModules ?: [];
+        $listOfSetupModules = $result->fetch_all();
+        $listOfSetupModulesOneArr = [];
+        foreach ($listOfSetupModules as $value) {
+            $listOfSetupModulesOneArr = array_merge($listOfSetupModulesOneArr, $value);
+        }
+        return $listOfSetupModulesOneArr ?: [];
 //        return ($listOfSetupModules) ? ($listOfSetupModules) : ([]);
     }
 

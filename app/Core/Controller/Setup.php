@@ -56,7 +56,7 @@ class Setup implements ControllerInterface
     private function getListOfSetupModules(DBConnection $connection): array
     {
         $select = new Select($connection);
-        $where = new Where(['module_path', 'Eco%', 'LIKE']);
+        $where = new Where(['module_path', 'Ec%', 'LIKE']);
         return $select->select('setup_modules', $where);
     }
 }
