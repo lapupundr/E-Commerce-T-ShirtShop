@@ -16,12 +16,6 @@ class Select implements SelectInterface
         $connection = DBConnection::getConnection();
         $result = $connection->query($sql);
         return $result->fetch_all();
-//        $listOfSetupModulesOneArr = [];
-//        foreach ($listOfSetupModules as $value) {
-//            $listOfSetupModulesOneArr = array_merge($listOfSetupModulesOneArr, $value);
-//        }
-//        return $listOfSetupModulesOneArr ?: [];
-//        return ($listOfSetupModules) ? ($listOfSetupModules) : ([]);
     }
 
     /**

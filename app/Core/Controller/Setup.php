@@ -20,6 +20,11 @@ class Setup implements ControllerInterface
         echo 'You are inside setup modules';
         $listOfScripts = glob('app/*/Setup/*.php');
         $listOfSetupModules = $this->getListOfSetupModules();
+        $listOfSetupModulesOneArr = [];
+        foreach ($listOfSetupModules as $value) {
+            $listOfSetupModulesOneArr = array_merge($listOfSetupModulesOneArr, $value);
+        }
+        $listOfSetupModules = $listOfSetupModulesOneArr ?: [];
 
         foreach ($listOfScripts as $installFile) {
             $path = $this->transformPath($installFile);
