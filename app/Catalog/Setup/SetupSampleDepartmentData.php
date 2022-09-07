@@ -5,23 +5,11 @@ declare(strict_types=1);
 namespace Ecommerce\Catalog\Setup;
 
 use Ecommerce\Core\DB\ConnectionInterface;
+use Ecommerce\Core\DB\DBConnection;
 use Ecommerce\Core\Install\InstallInterface;
 
 class SetupSampleDepartmentData implements InstallInterface
 {
-    /**
-     * @var ConnectionInterface
-     */
-    private ConnectionInterface $connection;
-
-    /**
-     * @param ConnectionInterface $connection
-     */
-    public function __construct(ConnectionInterface $connection)
-    {
-        $this->connection = $connection;
-    }
-
     /**
      * @inheritDoc
      */
@@ -34,8 +22,7 @@ INSERT INTO department (department_id, name, description) VALUES
 (3, 'Seasonal', 'Each time of the year has a special flavor. Our seasonal T-shirts express traditional symbols using unique postal stamp
 pictures.');
 SQL;
-        $connection = $this->connection->getConnection();
-//        $connection->query('DROP TABLE IF EXISTS catalog_product');
+        $connection = DBConnection::getConnection();
         $connection->query($sql);
     }
 }

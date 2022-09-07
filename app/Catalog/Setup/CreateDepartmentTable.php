@@ -4,23 +4,11 @@ declare(strict_types=1);
 namespace Ecommerce\Catalog\Setup;
 
 use Ecommerce\Core\DB\ConnectionInterface;
+use Ecommerce\Core\DB\DBConnection;
 use Ecommerce\Core\Install\InstallInterface;
 
 class CreateDepartmentTable implements InstallInterface
 {
-    /**
-     * @var ConnectionInterface
-     */
-    private  ConnectionInterface $connection;
-
-    /**
-     * @param ConnectionInterface $connection
-     */
-    public function __construct(ConnectionInterface $connection)
-    {
-        $this->connection = $connection;
-    }
-
     /**
      * @inheritDoc
      */
@@ -34,7 +22,7 @@ description VARCHAR(1000)
 )
 SQL;
 
-        $connection = $this->connection->getConnection();
+        $connection = DBConnection::getConnection();
         $connection->query('DROP TABLE IF EXISTS department');
         $connection->query($sql);
     }

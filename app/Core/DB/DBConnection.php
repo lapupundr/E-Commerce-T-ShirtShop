@@ -12,22 +12,22 @@ class DBConnection implements ConnectionInterface
     /**
      * @var mysqli|null
      */
-    private mysqli|null $connection = null;
+    private static mysqli|null $connection = null;
 
     /**
      * @inheritDoc
      */
-    public function getConnection(): mysqli
+    public static function getConnection(): mysqli
     {
-        if ($this->connection === null) {
+        if (self::$connection === null) {
             try {
                 $connection = mysqli_connect('localhost', 'root', 'root', 't_shirt_shop');
             } catch (Throwable $e) {
                 echo 'Unable to establish the connection to the database';
                 exit();
             }
-            $this->connection = $connection;
+            self::$connection = $connection;
         }
-        return $this->connection;
+        return self::$connection;
     }
 }

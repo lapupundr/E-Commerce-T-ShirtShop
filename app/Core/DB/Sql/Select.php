@@ -2,38 +2,25 @@
 
 namespace Ecommerce\Core\DB\Sql;
 
-use Ecommerce\Core\DB\ConnectionInterface;
+use Ecommerce\Core\DB\DBConnection;
 
 class Select implements SelectInterface
 {
     /**
-     * @var ConnectionInterface
-     */
-    private ConnectionInterface $connection;
-
-    /**
-     * @param ConnectionInterface $connection
-     */
-    public function __construct(ConnectionInterface $connection)
-    {
-        $this->connection = $connection;
-    }
-
-    /**
      * @inheritDoc
      */
-    public function select(string $table, ?WhereInterface $where): array
+    public function select(string $table, ?WhereInterface $where = null): array
     {
         $sql = "SELECT * FROM $table";
         $this->addWhereCondition($where, $sql);
-        $connection = $this->connection->getConnection();
+        $connection = DBConnection::getConnection();
         $result = $connection->query($sql);
-        $listOfSetupModules = $result->fetch_all();
-        $listOfSetupModulesOneArr = [];
-        foreach ($listOfSetupModules as $value) {
-            $listOfSetupModulesOneArr = array_merge($listOfSetupModulesOneArr, $value);
-        }
-        return $listOfSetupModulesOneArr ?: [];
+        return $result->fetch_all();
+//        $listOfSetupModulesOneArr = [];
+//        foreach ($listOfSetupModules as $value) {
+//            $listOfSetupModulesOneArr = array_merge($listOfSetupModulesOneArr, $value);
+//        }
+//        return $listOfSetupModulesOneArr ?: [];
 //        return ($listOfSetupModules) ? ($listOfSetupModules) : ([]);
     }
 
