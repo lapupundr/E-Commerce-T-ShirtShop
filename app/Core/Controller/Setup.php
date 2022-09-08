@@ -30,7 +30,7 @@ class Setup implements ControllerInterface
             $path = $this->transformPath($installFile);
             $pathNoSlash = str_replace('\\', '', $path);
             if (!in_array($pathNoSlash, $listOfSetupModules)) {
-                echo ' not found module, install it; ';
+                echo ' NOT found module, install it; ';
                 $object = new $path();
                 $object->install();
                 $addModule = new Insert();
