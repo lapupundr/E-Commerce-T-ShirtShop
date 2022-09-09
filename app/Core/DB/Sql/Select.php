@@ -9,13 +9,13 @@ class Select implements SelectInterface
     /**
      * @inheritDoc
      */
-    public function select(string $table, ?WhereInterface $where = null): array
+    public function selectAll(string $table, ?WhereInterface $where = null): array
     {
         $sql = "SELECT * FROM $table";
         $this->addWhereCondition($where, $sql);
         $connection = DBConnection::getConnection();
         $result = $connection->query($sql);
-        return $result->fetch_all();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     /**

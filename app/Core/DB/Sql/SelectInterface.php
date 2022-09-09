@@ -12,5 +12,5 @@ interface SelectInterface
      * @param WhereInterface|null $where ['field' => '', 'value' => '', 'condition' => '=']]
      * @return string[]
      */
-    public function select(string $table, ?WhereInterface $where): array;
+    public function selectAll(string $table, ?WhereInterface $where): array;
 }

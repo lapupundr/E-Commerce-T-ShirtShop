@@ -14,6 +14,8 @@ class GetDepartments
     public function getDepartments(): array
     {
         $select = new Select();
-        return $select->select('department');
+        $result = $select->selectAll('department');
+
+        return $result;
     }
 }

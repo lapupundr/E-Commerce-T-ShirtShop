@@ -22,7 +22,7 @@ class Setup implements ControllerInterface
         $listOfSetupModules = $this->getListOfSetupModules();
         $listOfSetupModulesOneArr = [];
         foreach ($listOfSetupModules as $value) {
-            $listOfSetupModulesOneArr = array_merge($listOfSetupModulesOneArr, $value);
+            $listOfSetupModulesOneArr[] = $value['module_path'];
         }
         $listOfSetupModules = $listOfSetupModulesOneArr ?: [];
 
@@ -59,6 +59,6 @@ class Setup implements ControllerInterface
     {
         $select = new Select();
         $where = new Where(['module_path', 'Ec%', 'LIKE']);
-        return $select->select('setup_modules', $where);
+        return $select->selectAll('setup_modules', $where);
     }
 }
