@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ecommerce\Cart\View;
 
 use Ecommerce\Core\Controller\ControllerInterface;

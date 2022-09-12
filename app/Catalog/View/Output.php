@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ecommerce\Catalog\View;
 
 use Ecommerce\Catalog\Model\GetDepartments;
@@ -20,7 +22,7 @@ class Output implements ControllerInterface
         $loader = new FilesystemLoader('templates');
         $twig = new Environment($loader);
         $template = $twig->load('products.twig');
-        echo $template->render([]);
+        echo $template->render(['the' => 'variables', 'go' => 'here']);
 
 
 

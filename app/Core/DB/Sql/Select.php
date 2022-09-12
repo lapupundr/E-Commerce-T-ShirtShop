@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ecommerce\Core\DB\Sql;
 
 use Ecommerce\Core\DB\DBConnection;
@@ -19,6 +21,7 @@ class Select implements SelectInterface
     }
 
     /**
+     * Add WHERE condition into SQL query
      * @param WhereInterface|null $where
      * @param string $sql
      * @return void
