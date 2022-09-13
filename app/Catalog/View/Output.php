@@ -22,10 +22,6 @@ class Output implements ControllerInterface
         $loader = new FilesystemLoader('templates');
         $twig = new Environment($loader);
         $template = $twig->load('products.twig');
-        echo $template->render(['the' => 'variables', 'go' => 'here']);
-
-
-
-//        $twig->display('products.twig');
+        echo $template->render($data);
     }
 }

@@ -1,4 +1,6 @@
-<ul>Departments List
-    <li>test 1</li>
-    <li>test 2</li>
+<ul> <h3>Departments List</h3>
+
+    {% for value in _context  %}
+            <li>{{ value.name }}</li>
+    {% endfor %}
 </ul>
