@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ecommerce\Catalog\View;
 
+use Ecommerce\Catalog\Model\DepartmentRepository;
 use Ecommerce\Catalog\Model\GetDepartments;
 use Ecommerce\Core\Controller\ControllerInterface;
 use Twig\Environment;
@@ -16,8 +17,8 @@ class Output implements ControllerInterface
      */
     public function execute(): void
     {
-        $departments = new GetDepartments();
-        $data = $departments->getDepartments();
+        $departmets = new DepartmentRepository();
+        $data = $departmets->getList();
 
         $loader = new FilesystemLoader('templates');
         $twig = new Environment($loader);
