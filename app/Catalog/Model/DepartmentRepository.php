@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ecommerce\Catalog\Model;
 
 use Ecommerce\Core\DB\Sql\Select;
+use Ecommerce\Core\DB\Sql\Where;
 
 class DepartmentRepository implements DepartmentRepositoryInterface
 {
@@ -15,9 +16,7 @@ class DepartmentRepository implements DepartmentRepositoryInterface
     public function getList(): array
     {
         $select = new Select();
-        $result = $select->selectAll('department');
-
-        return $result;
+        return $select->selectAll('department');
     }
 
     /**
@@ -25,6 +24,8 @@ class DepartmentRepository implements DepartmentRepositoryInterface
      */
     public function get(int $departmentId): array
     {
-        // TODO: Implement get() method.
+        $select = new Select();
+        $where = new Where(['department_id', $departmentId, '=']);
+        return $select->selectAll('department', $where);
     }
 }

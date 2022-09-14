@@ -18,11 +18,13 @@ class Output implements ControllerInterface
     public function execute(): void
     {
         $departmets = new DepartmentRepository();
-        $data = $departmets->getList();
+        $dataList = $departmets->getList();
+        $data = $departmets->get(2);
+
 
         $loader = new FilesystemLoader('templates');
         $twig = new Environment($loader);
         $template = $twig->load('products.twig');
-        echo $template->render($data);
+        echo $template->render($dataList);
     }
 }
