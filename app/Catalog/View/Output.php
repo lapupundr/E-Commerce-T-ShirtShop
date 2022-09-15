@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Ecommerce\Catalog\View;
 
-use Ecommerce\Catalog\Model\DepartmentRepository;
-use Ecommerce\Catalog\Model\GetDepartments;
+use Ecommerce\Department\Model\DepartmentRepository;
+use Ecommerce\Department\Model\GetDepartments;
 use Ecommerce\Core\Controller\ControllerInterface;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
