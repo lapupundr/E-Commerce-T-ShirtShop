@@ -19,8 +19,11 @@ class Output implements ControllerInterface
     {
         $departmets = new DepartmentRepository();
         $dataList = $departmets->getList();
-        $dataId = $departmets->get((int) $_GET['id']);
-
+        if ($_GET) {
+            $dataId = $departmets->get((int)$_GET['id']);
+        } else {
+            $dataId = [];
+        }
         $loader = new FilesystemLoader('templates');
         $twig = new Environment($loader, ['cache' => 'templates_c']);
         $template = $twig->load('products.twig');

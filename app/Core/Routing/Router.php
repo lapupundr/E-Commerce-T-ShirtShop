@@ -33,7 +33,9 @@ class Router implements RouterInterface
     private function retrieveControllerName(): array
     {
         $requestUri = $_SERVER['REQUEST_URI'];
-        $requestUri = strstr($requestUri, '?', true);
+        if (str_contains($requestUri, '?')) {
+            $requestUri = strstr($requestUri, '?', true);
+        }
         $requestArray = explode('/', $requestUri);
         $urlKeys = [];
         foreach ($requestArray as $element) {
