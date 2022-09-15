@@ -1,0 +1,82 @@
+div {
+    border: 1px solid black;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr 1fr;
+    grid-template-rows: 0.5fr 2.1fr 0.4fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+    "header header header"
+    "left content content"
+    "footer footer footer";
+}
+
+header {
+    grid-area: header;
+}
+
+aside {
+    grid-area: left;
+}
+
+main {
+    grid-area: content;
+}
+
+footer {
+    grid-area: footer;
+}
+
+div.yui-b div.box {
+    color: #333333;
+    border: 1px solid #c6e1ec;
+    margin-top: 15px;
+}
+
+div.yui-b div p.box-title {
+    background: #0590C7;
+    border-bottom: 2px solid #c6e1ec;
+    color: #FFFFFF;
+    display: block;
+    font-size: 93%;
+    font-weight: bold;
+    margin: lpx;
+    padding: 2px 10px;
+}
+
+a {
+    color: #0590C7;
+}
+
+a:hover {
+    color: #ff0000;
+}
+
+a.selected {
+    font-weight: bold;
+    color: red;
+}
+
+div.yui-b div ul {
+    margin: 0;
+}
+
+diveyui-b div ul li {
+    border-bottom: 1px solid #fff;
+    list-style-type: none;
+}
+
+div.yui-b div ul li a {
+    color: #333333;
+    display: block;
+    text-decoration: none;
+    padding: 3px 10px;
+}
+
+div.yui-b div ul li a:hover {
+    background: #c6e1ec;
+    color: #333333;
+}
