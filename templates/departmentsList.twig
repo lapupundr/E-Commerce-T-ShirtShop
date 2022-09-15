@@ -1,6 +1,16 @@
-<ul> <h3>Departments List</h3>
+<div>
+    <ul><h3>Departments List</h3>
 
-    {% for value in dataList  %}
-        <li><a href="/catalog/view?id={{ value.department_id }}">{{ value.department_id }} {{ value.name }}</a></li>
-    {% endfor %}
-</ul>
+        {% for value in dataList %}
+
+            {% if value.department_id == dataId.0.department_id %}
+                {% set classSelected = "selected" %}
+            {% else %}
+                {% set classSelected = "" %}
+            {% endif %}
+
+            <li><a class="{{ classSelected }}"
+                   href="/catalog/view?id={{ value.department_id }}">{{ value.department_id }} {{ value.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
