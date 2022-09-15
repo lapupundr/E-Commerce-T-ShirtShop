@@ -7,7 +7,7 @@ namespace Ecommerce\Department\Controller;
 use Ecommerce\Department\View\Output;
 use Ecommerce\Core\Controller\ControllerInterface;
 
-class View implements ControllerInterface
+class Listing implements ControllerInterface
 {
     /**
      * Loading the Catalog template

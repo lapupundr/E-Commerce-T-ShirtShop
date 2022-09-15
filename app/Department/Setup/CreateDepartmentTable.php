@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Ecommerce\Catalog\Setup;
+namespace Ecommerce\Department\Setup;
 
 use Ecommerce\Core\DB\DBConnection;
 use Ecommerce\Core\Install\InstallInterface;

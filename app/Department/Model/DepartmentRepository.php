@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ecommerce\Catalog\Model;
+namespace Ecommerce\Department\Model;
 
 use Ecommerce\Core\DB\Sql\Select;
 use Ecommerce\Core\DB\Sql\Where;
