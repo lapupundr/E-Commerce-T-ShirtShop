@@ -19,12 +19,11 @@ class Output implements ControllerInterface
     {
         $departmets = new DepartmentRepository();
         $dataList = $departmets->getList();
-        $data = $departmets->get(2);
-
+        $dataId = $departmets->get((int) $_GET['id']);
 
         $loader = new FilesystemLoader('templates');
-        $twig = new Environment($loader);
+        $twig = new Environment($loader, ['cache' => 'templates_c']);
         $template = $twig->load('products.twig');
-        echo $template->render($dataList);
+        echo $template->render(['dataList' => $dataList, 'dataId' => $dataId]);
     }
 }

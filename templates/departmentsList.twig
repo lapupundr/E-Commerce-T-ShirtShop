@@ -1,7 +1,6 @@
 <ul> <h3>Departments List</h3>
 
-    {% for value in _context  %}
-        <li>{{ value.name }}</li>
+    {% for value in dataList  %}
         <li><a href="/catalog/view?id={{ value.department_id }}">{{ value.department_id }} {{ value.name }}</a></li>
     {% endfor %}
 </ul>
