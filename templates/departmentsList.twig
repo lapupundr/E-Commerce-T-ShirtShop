@@ -1,6 +1,6 @@
-<div>
-    <ul><h3>Departments List</h3>
-
+<div class="box">
+    <p class="box-title">Choose a Department</p>
+    <ul>
         {% for value in dataList %}
 
             {% if value.department_id == dataId.0.department_id %}
@@ -10,7 +10,9 @@
             {% endif %}
 
             <li><a class="{{ classSelected }}"
-                   href="/department/listing?id={{ value.department_id }}">{{ value.department_id }} {{ value.name }}</a></li>
+                   href="/department/listing?id={{ value.department_id }}">{{ value.department_id }} {{ value.name }}</a>
+            </li>
         {% endfor %}
     </ul>
+
 </div>

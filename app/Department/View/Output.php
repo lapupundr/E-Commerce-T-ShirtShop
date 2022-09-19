@@ -27,7 +27,7 @@ class Output implements ControllerInterface
         $loader = new FilesystemLoader('templates');
         $twig = new Environment(
             $loader,
-//            ['cache' => 'templates_c'],
+            ['cache' => 'templates_c'],
         );
         $template = $twig->load('products.twig');
         echo $template->render(['dataList' => $dataList, 'dataId' => $dataId]);

@@ -1,6 +1,3 @@
-div {
-    border: 3px solid black;
-}
 
 .container {
     display: grid;
@@ -16,6 +13,8 @@ div {
 
 header {
     grid-area: header;
+    font-family: Impact, sans-serif;
+    color: #CE5937;
 }
 
 aside {
@@ -79,4 +78,10 @@ div.yui-b div ul li a {
 div.yui-b div ul li a:hover {
     background: #c6e1ec;
     color: #333333;
+}
+
+h1{
+    font-family: Impact, sans-serif;
+    color: #CE5937;
+
 }
