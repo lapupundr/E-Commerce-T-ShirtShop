@@ -12,38 +12,59 @@
 }
 
 header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     grid-area: header;
     font-family: Impact, sans-serif;
-    color: #CE5937;
+    background: #808080;
+    background-image: url("/img/t-shirt.png");
+    background-size: 150px auto;
+    background-repeat: no-repeat;
+    height: 150px;
+    vertical-align: middle;
+
+}
+
+header img {
+    height: 100px;
+    background: none;
+    align-content: ;
 }
 
 aside {
     grid-area: left;
+    margin: 20px 0px;
 }
 
 main {
     grid-area: content;
+    margin: 20px;
 }
 
 footer {
     grid-area: footer;
+    background: #808080;
+    padding: 20px;
+    text-align: center;
+    color: #333333;
 }
 
 div.yui-b div.box {
     color: #333333;
-    border: 1px solid #c6e1ec;
+    /*border: 1px solid #c6e1ec;*/
     margin-top: 15px;
 }
 
 div.yui-b div p.box-title {
-    background: #0590C7;
-    border-bottom: 2px solid #c6e1ec;
+    background: #808080;
+    /*border-bottom: 2px solid #c6e1ec;*/
     color: #FFFFFF;
     display: block;
     font-size: 93%;
     font-weight: bold;
-    margin: lpx;
-    padding: 2px 10px;
+    margin: 5px 0;
+    padding: 5px 10px;
 }
 
 a {
@@ -61,18 +82,20 @@ a.selected {
 
 div.yui-b div ul {
     margin: 0;
+    list-style: none;
 }
 
 diveyui-b div ul li {
     border-bottom: 1px solid #fff;
-    list-style-type: none;
+    /*list-style-type: none;*/
+    /*list-style: none;*/
 }
 
 div.yui-b div ul li a {
     color: #333333;
     display: block;
     text-decoration: none;
-    padding: 3px 10px;
+    padding: 5px;
 }
 
 div.yui-b div ul li a:hover {
@@ -82,6 +105,7 @@ div.yui-b div ul li a:hover {
 
 h1{
     font-family: Impact, sans-serif;
-    color: #CE5937;
+    color: #333333;
+    text-align: center;
 
 }
