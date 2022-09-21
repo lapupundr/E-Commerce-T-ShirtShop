@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace Ecommerce\Core\Routing;
 
+use Ecommerce\Core\Controller\ControllerInterface;
+
 /**
  * Defines an approach of matching browser request URLs with our controllers.
  */
 interface RouterInterface
 {
     /**
-     * Here we identify which controllers to use. And execute its action method.
-     * We are expecting that some controller will be found here and after that
-     * we run here its execute() method.
+     * Here we identify which controllers to use.
+     * If some controller will be found we return object ControllerInterface
+     * else return false
      *
-     * @return void
+     * @param string[] $controllerName
+     * @return ControllerInterface|false
      */
-    public function match(): void;
+    public function match(array $controllerName): ControllerInterface|false;
 }
