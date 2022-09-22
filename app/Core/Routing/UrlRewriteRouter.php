@@ -11,6 +11,7 @@ class UrlRewriteRouter implements RouterInterface
      */
     public function match(): ControllerInterface|false
     {
+        echo (' UrlRewriteRouter ');
         return false;
     }
 }

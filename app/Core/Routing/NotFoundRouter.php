@@ -14,7 +14,7 @@ class NotFoundRouter implements RouterInterface
      */
     public function match(): ControllerInterface|false
     {
-        echo("404 ");
+        echo(" 404 ");
         return new NoRoute();
     }
 }
