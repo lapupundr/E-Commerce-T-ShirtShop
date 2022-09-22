@@ -4,6 +4,7 @@ namespace Ecommerce\Core\Routing;
 
 use Ecommerce\Core\Controller\ControllerInterface;
 use Ecommerce\Core\DB\Sql\Select;
+use Ecommerce\Core\DB\Sql\Where;
 
 class UrlRewriteRouter implements RouterInterface
 {
@@ -14,11 +15,13 @@ class UrlRewriteRouter implements RouterInterface
     {
         echo (' UrlRewriteRouter ');
         $urlName = $_SERVER['REQUEST_URI'];
+        $urlName = ltrim($urlName, "/");
         $controllerList = new Select();
-        $controllerList = $controllerList->selectAll('url_rewrite');
-        if (in_array($urlName, $controllerList)) {
-        }
+        $where = new Where(['request_url', $urlName, '=']);
+        $controllerList = $controllerList->selectAll('url_rewrite', $where);
 
-        return false;
+        $result = $controllerList[0]['controller_name'];
+
+        return new $result;
     }
 }

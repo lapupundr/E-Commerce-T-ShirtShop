@@ -20,6 +20,15 @@ class Select implements SelectInterface
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function selectColumn(string $table, string $nameCol, ?WhereInterface $where = null): array
+    {
+        $sql = "SELECT $nameCol FROM $table";
+        $this->addWhereCondition($where, $sql);
+        $connection = DBConnection::getConnection();
+        $result = $connection->query($sql);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Add WHERE condition into SQL query
      * @param WhereInterface|null $where
