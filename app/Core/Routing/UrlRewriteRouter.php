@@ -6,11 +6,10 @@ use Ecommerce\Core\Controller\ControllerInterface;
 
 class UrlRewriteRouter implements RouterInterface
 {
-
     /**
      * @inheritDoc
      */
-    public function match(array $controllerName): ControllerInterface|false
+    public function match(): ControllerInterface|false
     {
         return false;
     }

@@ -9,13 +9,12 @@ use Ecommerce\Core\Controller\NoRoute;
 
 class NotFoundRouter implements RouterInterface
 {
-
     /**
      * @inheritDoc
      */
-    public function match(array $controllerName): ControllerInterface|false
+    public function match(): ControllerInterface|false
     {
-        echo ("404 ");
+        echo("404 ");
         return new NoRoute();
     }
 }

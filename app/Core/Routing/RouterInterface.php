@@ -16,8 +16,7 @@ interface RouterInterface
      * If some controller will be found we return object ControllerInterface
      * else return false
      *
-     * @param string[] $controllerName
      * @return ControllerInterface|false
      */
-    public function match(array $controllerName): ControllerInterface|false;
+    public function match(): ControllerInterface|false;
 }
