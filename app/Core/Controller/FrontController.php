@@ -15,11 +15,16 @@ class FrontController implements FrontControllerInterface
      */
     public function execute(): void
     {
-        $controllerArray = [new Router(), new UrlRewriteRouter(), new NotFoundRouter()];
+        $controllerArray = [
+            new Router(),
+            new UrlRewriteRouter(),
+            new NotFoundRouter(),
+        ];
         foreach ($controllerArray as $value) {
             $controller = $value->match();
             if ($controller) {
                 $controller->execute();
+                break;
             }
         }
     }

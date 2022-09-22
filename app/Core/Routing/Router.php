@@ -14,8 +14,7 @@ class Router implements RouterInterface
      */
     public function match(): ControllerInterface|false
     {
-        $controllerName = new RetrieveControllerName();
-        $controllerName = $controllerName->retrieveControllerName();
+        $controllerName = $this->retrieveControllerName();
 
         $className = sprintf(
             '\Ecommerce\%s\Controller\%s',
@@ -28,5 +27,27 @@ class Router implements RouterInterface
             $controller = false;
         }
         return $controller;
+    }
+
+    /**
+     * Retrieve controller name from URL and put it into array
+     *
+     * @return string[]
+     */
+    private function retrieveControllerName(): array
+    {
+        $requestUri = $_SERVER['REQUEST_URI'];
+        if (str_contains($requestUri, '?')) {
+            $requestUri = strstr($requestUri, '?', true);
+        }
+        $requestArray = explode('/', $requestUri);
+        $urlKeys = [];
+        foreach ($requestArray as $element) {
+            if ($element) {
+                $element = substr($element, 0, strcspn($element, '.'));
+                $urlKeys[] = ucfirst($element);
+            }
+        }
+        return $urlKeys;
     }
 }
