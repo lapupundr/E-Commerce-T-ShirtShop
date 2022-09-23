@@ -13,15 +13,21 @@ class UrlRewriteRouter implements RouterInterface
      */
     public function match(): ControllerInterface|false
     {
-        echo (' UrlRewriteRouter ');
         $urlName = $_SERVER['REQUEST_URI'];
         $urlName = ltrim($urlName, "/");
+        $urlName = rtrim($urlName, ".php");
         $controllerList = new Select();
         $where = new Where(['request_url', $urlName, '=']);
         $controllerList = $controllerList->selectAll('url_rewrite', $where);
-
-        $result = $controllerList[0]['controller_name'];
-
-        return new $result;
+        if (isset($controllerList[0])) {
+            $json = $controllerList[0]['properties'];
+            $json = json_decode($json, true);
+            $_GET = $json;
+            $result = $controllerList[0]['controller_name'];
+            $result = str_replace('/', '\\', $result);
+            return new $result();
+        } else {
+            return false;
+        }
     }
 }
