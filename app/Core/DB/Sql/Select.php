@@ -20,6 +20,9 @@ class Select implements SelectInterface
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * @inheritDoc
+     */
     public function selectColumn(string $table, string $nameCol, ?WhereInterface $where = null): array
     {
         $sql = "SELECT $nameCol FROM $table";

@@ -14,8 +14,8 @@ class UrlRewriteRouter implements RouterInterface
     public function match(): ControllerInterface|false
     {
         $urlName = $_SERVER['REQUEST_URI'];
-        $urlName = ltrim($urlName, "/");
-        $urlName = rtrim($urlName, ".php");
+        $info = pathinfo($urlName);
+        $urlName = $info['filename'];
         $controllerList = new Select();
         $where = new Where(['request_url', $urlName, '=']);
         $controllerList = $controllerList->selectAll('url_rewrite', $where);

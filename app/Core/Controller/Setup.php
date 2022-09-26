@@ -12,6 +12,12 @@ use Ecommerce\Core\DB\WhereConditionException;
 class Setup implements ControllerInterface
 {
     /**
+     * Column name with the path to Setup class
+     * (usually this class contains SQL scripts with CREATE TABLE / INSERT / UPDATE)
+     */
+    private const COLUMN_MODULE_PATH = 'module_path';
+
+    /**
      * @inheritDoc
      * @throws WhereConditionException
      */
@@ -22,7 +28,7 @@ class Setup implements ControllerInterface
         $listOfSetupModules = $this->getListOfSetupModules();
         $listOfSetupModulesOneArr = [];
         foreach ($listOfSetupModules as $value) {
-            $listOfSetupModulesOneArr[] = $value['module_path'];
+            $listOfSetupModulesOneArr[] = $value[self::COLUMN_MODULE_PATH];
         }
         $listOfSetupModules = $listOfSetupModulesOneArr ?: [];
 
@@ -34,7 +40,7 @@ class Setup implements ControllerInterface
                 $object = new $path();
                 $object->install();
                 $addModule = new Insert();
-                $addModule->insert('setup_modules', ['module_path'=>$pathNoSlash]);
+                $addModule->insert('setup_modules', [self::COLUMN_MODULE_PATH =>$pathNoSlash]);
             } else {
                 echo ' Module is already installed';
             }
@@ -58,7 +64,7 @@ class Setup implements ControllerInterface
     private function getListOfSetupModules(): array
     {
         $select = new Select();
-        $where = new Where(['module_path', 'Ec%', 'LIKE']);
+        $where = new Where([self::COLUMN_MODULE_PATH, 'Ec%', 'LIKE']);
         return $select->selectAll('setup_modules', $where);
     }
 }

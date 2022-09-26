@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Ecommerce\Core\DB;
 
-class WhereConditionException extends \Exception
+use Exception;
+
+class WhereConditionException extends Exception
 {
 
 }

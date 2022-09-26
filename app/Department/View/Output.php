@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ecommerce\Department\View;
 
 use Ecommerce\Department\Model\DepartmentRepository;
-use Ecommerce\Department\Model\GetDepartments;
 use Ecommerce\Core\Controller\ControllerInterface;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;

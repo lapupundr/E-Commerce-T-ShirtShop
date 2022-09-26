@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Ecommerce\Core\Routing;
 
 use Ecommerce\Core\Controller\ControllerInterface;
-use Ecommerce\Core\Controller\RetrieveControllerName;
 
 class Router implements RouterInterface
 {

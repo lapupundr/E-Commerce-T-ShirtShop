@@ -13,4 +13,15 @@ interface SelectInterface
      * @return string[]
      */
     public function selectAll(string $table, ?WhereInterface $where): array;
+
+    /**
+     * The same functionality as a classic select, but fetch the values only from specific column
+     *
+     * @param string $table
+     * @param string $nameCol
+     * @param WhereInterface|null $where
+     * @return array
+     */
+    public function selectColumn(string $table, string $nameCol, ?WhereInterface $where = null): array;
 }
+
