@@ -15,6 +15,14 @@ interface SelectInterface
     public function selectAll(string $table, ?WhereInterface $where): array;
 
     /**
+     * Retrieve the first row from array
+     *
+     * @param array $arr
+     * @return array
+     */
+    public function selectFirst(array $arr): array;
+
+    /**
      * The same functionality as a classic select, but fetch the values only from specific column
      *
      * @param string $table
