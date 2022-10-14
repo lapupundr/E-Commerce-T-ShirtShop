@@ -16,6 +16,7 @@ class CreateDepartmentTable implements InstallInterface
         $sql = <<<SQL
 CREATE TABLE department (
 department_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+url_key INT,
 name VARCHAR(100) NOT NULL,
 description VARCHAR(1000)                       
 )
