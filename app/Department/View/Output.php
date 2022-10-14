@@ -16,10 +16,10 @@ class Output implements ControllerInterface
      */
     public function execute(): void
     {
-        $departmets = new DepartmentRepository();
-        $dataList = $departmets->getList();
+        $departments = new DepartmentRepository();
+        $dataList = $departments->getList();
         if ($_GET) {
-            $dataId = $departmets->get((int)$_GET['id']);
+            $dataId = $departments->get((int)$_GET['id']);
         } else {
             $dataId = [];
         }

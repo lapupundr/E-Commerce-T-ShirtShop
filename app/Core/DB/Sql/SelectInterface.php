@@ -20,7 +20,7 @@ interface SelectInterface
      * @param array $arr
      * @return array
      */
-    public function selectFirst(array $arr): array;
+//    public function selectFirst(array $arr): array;
 
     /**
      * The same functionality as a classic select, but fetch the values only from specific column
