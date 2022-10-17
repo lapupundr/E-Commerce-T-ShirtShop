@@ -16,15 +16,17 @@ class CreateProductTables implements InstallInterface
     {
         $sql = <<<SQL
 CREATE TABLE product (
-id INT AUTO_INCREMENT PRIMARY KEY,
+product_id INT AUTO_INCREMENT PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
 description VARCHAR(1000) NOT NULL ,
+short_description VARCHAR(150),
 price NUMERIC(10, 2) NOT NULL ,
 discounted_price NUMERIC(10, 2) NOT NULL DEFAULT 0.00,
 image VARCHAR(150),
 image_2 VARCHAR(150),
 thumbnail VARCHAR(150),
-display SMALLINT NOT NULL DEFAULT 0                 
+display SMALLINT NOT NULL DEFAULT 0,
+url_key VARCHAR(150)                 
 )
 SQL;
         $connection = DBConnection::getConnection();
