@@ -1,7 +1,10 @@
 <div>
-    <p>Catalog</p>
+    <h2>Catalog</h2>
     <ul>
-        <li>in</li>
-        <li>templates</li>
+        {% for value in productList %}
+
+            <li>{{ value.product_id }} {{ value.name }}</a>
+            </li>
+        {% endfor %}
     </ul>
 </div>

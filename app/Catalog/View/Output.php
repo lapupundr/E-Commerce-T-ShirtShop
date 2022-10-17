@@ -4,12 +4,9 @@ declare(strict_types=1);
 
 namespace Ecommerce\Catalog\View;
 
-use Ecommerce\Department\Model\DepartmentRepository;
+use Ecommerce\Catalog\Model\ProductRepository;
 use Ecommerce\Core\Controller\ControllerInterface;
 use Twig\Environment;
-use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 
 class Output implements ControllerInterface
@@ -19,20 +16,16 @@ class Output implements ControllerInterface
      */
     public function execute(): void
     {
-        $departments = new DepartmentRepository();
-        $dataList = $departments->getList();
-        if ($_GET) {
-            $dataId = $departments->get((int)$_GET['id']);
-        } else {
-            $dataId = [];
-        }
+        $product = new ProductRepository();
+        $productList = $product->getList(1);
+        $productId = $product->get(1);
+
         $loader = new FilesystemLoader('templates');
-        $twig = new Environment($loader, ['cache' => 'templates_c']);
-        try {
-            $template = $twig->load('products.twig');
-        } catch (LoaderError|RuntimeError|SyntaxError) {
-            die('ERROR IN TEMPLATE FILE products.twig');
-        }
-        echo $template->render(['dataList' => $dataList, 'dataId' => $dataId]);
+        $twig = new Environment(
+            $loader,
+//            ['cache' => 'templates_c'],
+        );
+        $template = $twig->load('products.twig');
+        echo $template->render(['productList' => $productList, 'productId' => $productId]);
     }
 }

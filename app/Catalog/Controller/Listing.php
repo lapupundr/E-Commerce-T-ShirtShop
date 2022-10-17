@@ -7,14 +7,14 @@ namespace Ecommerce\Catalog\Controller;
 use Ecommerce\Catalog\View\Output;
 use Ecommerce\Core\Controller\ControllerInterface;
 
-class View implements ControllerInterface
+class Listing implements ControllerInterface
 {
     /**
-     * Loading the Catalog template
+     * @inheritDoc
      */
     public function execute(): void
     {
-        $view = new Output();
-        $view->execute();
+//        $view = new Output();
+//        $view->execute();
     }
 }
