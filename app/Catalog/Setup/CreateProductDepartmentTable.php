@@ -16,9 +16,10 @@ class CreateProductDepartmentTable implements InstallInterface
     {
         $sql = <<<SQL
 CREATE TABLE product_department (
-product_id INT NOT NULL ,
-department_id INT NOT NULL ,
-PRIMARY KEY (product_id, department_id)             
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+product_id INT NOT NULL,
+department_id INT NOT NULL,
+UNIQUE (product_id, department_id)             
 )
 SQL;
         $connection = DBConnection::getConnection();

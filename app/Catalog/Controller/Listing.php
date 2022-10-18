@@ -14,7 +14,7 @@ class Listing implements ControllerInterface
      */
     public function execute(): void
     {
-//        $view = new Output();
-//        $view->execute();
+        $view = new Output();
+        $view->execute();
     }
 }

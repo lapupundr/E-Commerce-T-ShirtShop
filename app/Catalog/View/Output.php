@@ -25,6 +25,7 @@ class Output implements ControllerInterface
             $loader,
 //            ['cache' => 'templates_c'],
         );
+//        $template = $twig->load('catalog/body.twig');
         $template = $twig->load('products.twig');
         echo $template->render(['productList' => $productList, 'productId' => $productId]);
     }
