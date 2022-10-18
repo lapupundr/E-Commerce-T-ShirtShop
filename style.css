@@ -2,7 +2,7 @@
 .container {
     display: grid;
     grid-template-columns: 0.8fr 1.2fr 1fr;
-    grid-template-rows: 0.5fr 2.1fr 0.4fr;
+    /*grid-template-rows: 150px 2.1fr 150px;*/
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
@@ -29,7 +29,7 @@ header {
 header img {
     height: 100px;
     background: none;
-    align-content: ;
+    /*align-content: ;*/
 }
 
 aside {
@@ -109,3 +109,22 @@ h1{
     text-align: center;
 
 }
+
+div.product-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.product-list-container{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px 10px;
+}
+
+p, h3{
+    margin: 0px;
+    padding: 0px;
+}
+

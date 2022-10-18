@@ -1,10 +1,14 @@
 <div>
     <h2>Catalog</h2>
-    <ul>
+    <div class="product-list">
         {% for value in productList %}
-
-            <li>{{ value.product_id }} {{ value.name }}</a>
-            </li>
+            <div class="product-list-container">
+                <img src="/img/product_images/{{ value.image }}">
+                <a href="/Catalog/View">
+                    <h3>{{ value.name }}</h3>
+                </a>
+                <p>Price: {{ value.price }}</p>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 </div>
