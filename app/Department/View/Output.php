@@ -32,7 +32,7 @@ class Output implements ControllerInterface
             $loader,
 //            ['cache' => 'templates_c'],
         );
-        $template = $twig->load('products.twig');
+        $template = $twig->load('main.twig');
         echo $template->render(['dataList' => $dataList, 'dataId' => $dataId, 'productList' => $productList]);
 
     }

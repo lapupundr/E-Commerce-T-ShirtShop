@@ -7,7 +7,7 @@ namespace Ecommerce\Catalog\Controller;
 use Ecommerce\Catalog\View\Output;
 use Ecommerce\Core\Controller\ControllerInterface;
 
-class Listing implements ControllerInterface
+class View implements ControllerInterface
 {
     /**
      * @inheritDoc

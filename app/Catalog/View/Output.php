@@ -17,7 +17,7 @@ class Output implements ControllerInterface
     public function execute(): void
     {
         $product = new ProductRepository();
-        $productList = $product->getList(1);
+//        $productList = $product->getList(1);
         $productId = $product->get(1);
 
         $loader = new FilesystemLoader('templates');
@@ -25,8 +25,8 @@ class Output implements ControllerInterface
             $loader,
 //            ['cache' => 'templates_c'],
         );
-//        $template = $twig->load('catalog/body.twig');
-        $template = $twig->load('products.twig');
-        echo $template->render(['productList' => $productList, 'productId' => $productId]);
+//        $template = $twig->load('catalog/productList.twig');
+        $template = $twig->load('mainProduct.twig');
+        echo $template->render(['product' => $productId]);
     }
 }

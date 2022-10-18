@@ -1,0 +1,13 @@
+<div class="box">
+    <ul>
+        {% for value in product %}
+            <h2>{{ value.name }}</h2>
+            <img src="/img/product_images/{{ value.image}}" width="200" alt="t-shirt">
+            <img src="/img/product_images/{{ value.image_2}}" width="200"  alt="t-shirt">
+            <p>{{ value.description }}</p>
+            <p><b>Price: {{ value.price }}</b></p>
+
+        {% endfor %}
+    </ul>
+
+</div>

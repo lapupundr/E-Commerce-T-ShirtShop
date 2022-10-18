@@ -17,9 +17,9 @@ class SetupSampleUrlRewriteData implements InstallInterface
     {
         $sql = <<<SQL
 INSERT INTO url_rewrite (request_url, controller_name, properties) VALUES
-('regional', '/Ecommerce/Department/Controller/Listing', '{"id": 1, "color": "black"}' ),
-('nature', '/Ecommerce/Department/Controller/Listing', '{"id": 2, "color": "white"}'),
-('seasonal', '/Ecommerce/Department/Controller/Listing', '{"id": 3, "color": "gray"}');
+('regional', '/Ecommerce/Department/Controller/View', '{"id": 1, "color": "black"}' ),
+('nature', '/Ecommerce/Department/Controller/View', '{"id": 2, "color": "white"}'),
+('seasonal', '/Ecommerce/Department/Controller/View', '{"id": 3, "color": "gray"}');
 SQL;
         $connection = DBConnection::getConnection();
         $connection->query($sql);
