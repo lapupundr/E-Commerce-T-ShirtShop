@@ -18,7 +18,7 @@ class Output implements ControllerInterface
     {
         $product = new ProductRepository();
 //        $productList = $product->getList(1);
-        $productId = $product->get(1);
+        $productId = $product->get((int)$_GET['id']);
 
         $loader = new FilesystemLoader('templates');
         $twig = new Environment(
