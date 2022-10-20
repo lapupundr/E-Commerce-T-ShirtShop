@@ -15,7 +15,7 @@ class UrlRewriteRouter implements RouterInterface
     {
         $urlName = $_SERVER['REQUEST_URI'];
         $info = pathinfo($urlName);
-        $urlName = $info['filename'];
+        $urlName = strstr(strtolower($info['filename']), '?', true)  ;
         $controllerList = new Select();
         $where = new Where(['request_url', $urlName, '=']);
         $controllerList = $controllerList->selectAll('url_rewrite', $where);
