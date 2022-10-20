@@ -4,7 +4,7 @@
         {% for value in productList %}
             <div class="product-list-container">
                 <img src="/img/product_images/{{ value.image }}">
-                <a href="/catalog/view?id={{ value.product_id }}">
+                <a href="/catalog/{{ value.url_key }}">
                     <h3>{{ value.name }}</h3>
                 </a>
                 <p>Price: {{ value.price }}</p>

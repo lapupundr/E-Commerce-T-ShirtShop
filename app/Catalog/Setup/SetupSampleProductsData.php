@@ -118,7 +118,14 @@ INSERT INTO `product` (`product_id`, `name`, `description`, `price`, `discounted
        (99, 'Thrilling Love', 'This girl''s got her hockey hunk right where she wants him!', 21.00, 18.50, 'thrilling-love.gif', 'thrilling-love-2.gif', 'thrilling-love-thumbnail.gif', 2),
        (100, 'The Rapture of Psyche', 'Now we''re getting a bit more serious!', 18.95, 16.99, 'the-rapture-of-psyche.gif', 'the-rapture-of-psyche-2.gif', 'the-rapture-of-psyche-thumbnail.gif', 2)
 SQL;
+        $sqlAddUrlRewrite = <<<SQL
+INSERT INTO url_rewrite (request_url, controller_name, properties)
+SELECT url_key, '/Ecommerce/Catalog/Controller/View', CONCAT('{"id": ', product_id, '}')
+FROM product
+SQL;
+
         $connection = DBConnection::getConnection();
         $connection->query($sql);
+        $connection->query($sqlAddUrlRewrite);
     }
 }

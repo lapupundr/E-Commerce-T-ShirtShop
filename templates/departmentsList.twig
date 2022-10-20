@@ -10,8 +10,7 @@
             {% endif %}
 
             <li><a class="{{ classSelected }}"
-                   href="/{{ value.name }}?id={{ value.department_id }}">{{ value.department_id }} {{ value.name }}</a>
-{#                   href="/department/listing?id={{ value.department_id }}">{{ value.department_id }} {{ value.name }}</a>#}
+                   href="/{{ value.name }}">{{ value.department_id }} {{ value.name }}</a>
             </li>
         {% endfor %}
     </ul>
