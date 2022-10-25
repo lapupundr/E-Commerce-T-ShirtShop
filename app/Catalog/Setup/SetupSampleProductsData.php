@@ -124,8 +124,10 @@ SELECT url_key, '/Ecommerce/Catalog/Controller/View', CONCAT('{"id": ', product_
 FROM product
 SQL;
 
+
         $connection = DBConnection::getConnection();
         $connection->query($sql);
         $connection->query($sqlAddUrlRewrite);
+
     }
 }
