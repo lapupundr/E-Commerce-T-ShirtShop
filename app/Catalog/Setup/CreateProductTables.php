@@ -26,8 +26,7 @@ image VARCHAR(150),
 image_2 VARCHAR(150),
 thumbnail VARCHAR(150),
 display SMALLINT NOT NULL DEFAULT 0,
-url_key VARCHAR(150) AS (LOWER(REPLACE(name, ' ', ''))),
-url_key1 VARCHAR(150)  
+url_key VARCHAR(150) 
 )
 SQL;
         $connection = DBConnection::getConnection();
