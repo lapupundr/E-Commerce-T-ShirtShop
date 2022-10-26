@@ -6,6 +6,8 @@
             <img src="/img/product_images/{{ value.image_2}}" height="300"  alt="t-shirt">
             <p>{{ value.description }}</p>
             <p><b>Price: {{ value.price }}</b></p>
+            <button>Add to Cart</button>
+            <input type="submit" name="addToCart" value="addToCart" product="{{ value.name }}">
         {% endfor %}
     </ul>
 

@@ -12,3 +12,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 $router = new FrontController();
 $router->execute();
+
+$addToCart = new Ecommerce\Cart\Controller\Add();
+$addToCart->execute();
