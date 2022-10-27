@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-$a = 1;
-
 session_start();
 
 use Ecommerce\Core\Controller\FrontController;

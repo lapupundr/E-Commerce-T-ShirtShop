@@ -9,7 +9,6 @@ use Ecommerce\Core\Install\InstallInterface;
 
 class CreateShoppingCartTable implements InstallInterface
 {
-
     /**
      * @inheritDoc
      */
@@ -24,6 +23,5 @@ SQL;
         $connection = DBConnection::getConnection();
         $connection->query('DROP TABLE IF EXISTS shopping_cart');
         $connection->query($sql);
-
     }
 }
