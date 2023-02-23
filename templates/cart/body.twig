@@ -1,7 +1,21 @@
 <div>
-    <p>Cart</p>
-    <ul>
-        <li>shopping</li>
-        <li>cart</li>
-    </ul>
+    <h2>Cart</h2>
+    <div class="product-list">
+        {% for value in productList %}
+            <div class="product-list-container">
+                <img src="/img/product_images/{{ value.image }}">
+                <a href="/catalog/{{ value.url_key }}">
+                    <h3>{{ value.name }}</h3>
+                </a>
+                <p>Price: {{ value.price }}</p>
+                <p>Quantity: {{ value.qty }}</p>
+                <p>ID: {{ value.product_id }}</p>
+                <form method="POST">
+                    <input type="hidden" name="productId" value="{{ value.product_id }}"/>
+                    <input type="submit" name="delete" value="Delete">
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
 </div>

@@ -14,12 +14,11 @@ class Add implements ControllerInterface
      *
      * @return void
      */
-    public function execute():void
+    public function execute(): void
     {
         if (isset($_POST['addToCart'])) {
             $cartRepository = new CartRepository();
             $cartRepository->add();
         }
-}
-
+    }
 }
