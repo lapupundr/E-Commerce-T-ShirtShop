@@ -31,8 +31,7 @@ class CartList implements CartListInterface
     {
         $select = new Select();
         $where = new Where(['phpsessid', $_COOKIE['PHPSESSID'], '=']);
-        $cardIdArray = $select->selectAll('shopping_cart', $where);
-        return (int)$cardIdArray[0]['id'];
-
+        $cartIdArray = $select->selectAll('shopping_cart', $where);
+        return $cartIdArray ? (int)$cartIdArray[0]['id'] : 0;
     }
 }

@@ -43,7 +43,7 @@ div.yui-b div p.box-title {
     display: block;
     font-size: 93%;
     font-weight: bold;
-    margin: lpx;
+    margin: 1px;
     padding: 2px 10px;
 }
 
@@ -79,4 +79,10 @@ div.yui-b div ul li a {
 div.yui-b div ul li a:hover {
     background: #c6e1ec;
     color: #333333;
+}
+
+.cart {
+    display: flex;
+    justify-content: end;
+    color: #0590C7;
 }
