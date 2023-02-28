@@ -13,4 +13,11 @@ interface CartRepositoryInterface
      */
     public function add(): void;
 
+    /**
+     * Delete items from cart and DB (shopping_cart).
+     *
+     * @return void
+     */
+    public function delete(): void;
+
 }

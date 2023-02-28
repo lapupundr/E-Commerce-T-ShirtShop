@@ -44,6 +44,15 @@ SQL;
 INSERT INTO shopping_cart_item (cart_id, product_id, qty) VALUES ($cartId, $productId, 1)
 SQL;
         $connection->query($sqlAddToCart);
+    }
 
+    public function delete(): void
+    {
+        $connection = DBConnection::getConnection();
+        $deleteId = $_POST['productId'];
+        $sqlDeleteFromCart = <<<SQL
+DELETE FROM shopping_cart_item WHERE product_id = $deleteId;
+SQL;
+        $connection->query($sqlDeleteFromCart);
     }
 }
