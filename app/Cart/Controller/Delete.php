@@ -15,6 +15,7 @@ class Delete implements ControllerInterface
         if (isset($_POST['delete'])) {
             $cartRepository = new CartRepository();
             $cartRepository->delete();
+            header("Location: /cart/view");
         }
     }
 }
