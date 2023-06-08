@@ -8,7 +8,7 @@
                     <h3>{{ value.name }}</h3>
                 </a>
                 <p>Price: {{ value.price }}</p>
-                <form method="POST">
+                <form action="/cart/add" method="POST">
                     <input type="hidden" name="productId" value="{{ value.product_id }}"/>
                     <input type="submit" name="addToCart" value="addToCart">
                 </form>

@@ -19,6 +19,7 @@ class Add implements ControllerInterface
         if (isset($_POST['addToCart'])) {
             $cartRepository = new CartRepository();
             $cartRepository->add();
+            header("Location: /cart/view");
         }
     }
 }
