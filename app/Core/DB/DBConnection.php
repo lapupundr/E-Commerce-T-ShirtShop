@@ -21,7 +21,7 @@ class DBConnection implements ConnectionInterface
     {
         if (self::$connection === null) {
             try {
-                $connection = mysqli_connect('localhost', 'root', 'root', 't_shirt_shop');
+                $connection = mysqli_connect('mysql', 'root', 'root', 't_shirt_shop');
             } catch (Throwable) {
                 echo 'Unable to establish the connection to the database';
                 exit();
